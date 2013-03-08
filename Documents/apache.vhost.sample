@@ -1,0 +1,21 @@
+
+
+<VirtualHost *:80>
+	ServerName prisma.localhost
+	DocumentRoot "/var/www/localhost/htdocs/prisma/Public"
+
+	<Directory "/var/www/localhost/htdocs/prisma/Public">
+		RewriteEngine On
+		RewriteCond %{REQUEST_FILENAME} -s [OR]
+		RewriteCond %{REQUEST_FILENAME} -l [OR]
+		RewriteCond %{REQUEST_FILENAME} -d
+		RewriteRule ^.*$ - [NC,L]
+		RewriteRule ^.*$ index.php [NC,L]
+
+		AllowOverride None
+		Order allow,deny
+		Allow from all
+	</Directory>
+</VirtualHost>
+
+
