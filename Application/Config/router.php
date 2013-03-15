@@ -9,18 +9,18 @@ return array(
 		'action' => array
 		(
 			'type' => 'redirect',
-			'uri' => '/main',
+			'uri' => 'main',
 		),
 
 		'subroutes' => array
 		(
-			/* http://<domain>/login */
+			/* http://<domain>/main */
 			'main' => array
 			(
 				'action' => array
 				(
 					'type' => 'controller',
-					'controller' => 'Prisma\Controller\MainController',
+					'controller' => 'Project\Controller\MainController',
 				),
 			),
 			'error' => array
@@ -28,7 +28,7 @@ return array(
 				'action' => array
 				(
 					'type' => 'controller',
-					'controller' => 'Prisma\Controller\ErrorController',
+					'controller' => 'Project\Controller\ErrorController',
 				),
 			),
 			/* below does not exist */
@@ -42,7 +42,7 @@ return array(
 						'action' => array
 						(
 							'type' => 'controller',
-							'controller' => 'Prisma\Controller\Resource\MicroHorarioController',
+							'controller' => 'Project\Controller\Resource\MicroHorarioController',
 						),
 					),
 					'log' => array
@@ -50,12 +50,13 @@ return array(
 						'action' => array
 						(
 							'type' => 'controller',
-							'controller' => 'Prisma\Controller\Resource\LogController',
+							'controller' => 'Project\Controller\Resource\LogController',
 						),
 					),
 				),
 			),
 		),
 	),
-	'errorRoute' => '/error'
+	'errorRoute' => 'error',
+	'baseUri' => '/restfram/Public/',
 );

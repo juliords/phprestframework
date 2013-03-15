@@ -6,9 +6,14 @@ use Framework\ControllerInvoke;
 
 class Router
 {
+	private static $config;
+
 	public static function init($config, $uri)
 	{
+		self::$config = $config;
+
 		$uri = self::removeGetParam($uri);
+		$uri = self::removeBaseUri($uri);
 
 		$route = self::getRoute($config['routes'], $uri);
 
@@ -16,6 +21,11 @@ class Router
 		{
 			self::redirectRoute($config['errorRoute']);
 		}
+	}
+
+	private static function removeBaseUri($uri)
+	{
+		return str_replace(self::$config['baseUri'], '', $uri);
 	}
 
 	private static function removeGetParam($uri)
@@ -65,7 +75,7 @@ class Router
 
 	public static function redirectRoute($routeUri)
 	{
-		header('Location: '.$routeUri);
+		header('Location: ' . self::$config['baseUri'] . $routeUri);
 
 		return true;
 	}

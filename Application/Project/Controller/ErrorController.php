@@ -1,6 +1,6 @@
 <?php
 
-namespace Prisma\Controller;
+namespace Project\Controller;
 
 use Framework\RestController;
 use Framework\ViewLoader;

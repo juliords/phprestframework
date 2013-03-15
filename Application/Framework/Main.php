@@ -9,11 +9,18 @@ Class Main
 {
 	public static function init()
 	{
-		Database::createConnection(include 'Config/db.php');
+		$dbconfig = include 'Config/db.php';
+		if($dbconfig['enabled'])
+		{
+			Database::createConnection(include 'Config/db.php');
+		}
 
 		Router::init(include 'Config/router.php', $_SERVER['REQUEST_URI']);
 
-		Database::closeConnection();
+		if($dbconfig['enabled'])
+		{
+			Database::closeConnection();
+		}
 	}
 }
 
